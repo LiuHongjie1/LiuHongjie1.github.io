@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>操作系统的概念、功能</title>
+      <link href="/2023/12/10/One/"/>
+      <url>/2023/12/10/One/</url>
+      
+        <content type="html"><![CDATA[<p>&emsp;&emsp;对《操作系统》的知识梳理  一</p><span id="more"></span><h2 id="零、计算机系统的结构层次"><a href="#零、计算机系统的结构层次" class="headerlink" title="零、计算机系统的结构层次"></a>零、计算机系统的结构层次</h2><img src="计算机系统的结构层次.jpg"  /><h2 id="一、操作系统的概念"><a href="#一、操作系统的概念" class="headerlink" title="一、操作系统的概念"></a>一、操作系统的概念</h2><p>&emsp;&emsp;操作系统(Operating System,OS)是指控制和<strong>管理</strong>整个计算机系统的<strong>硬件和软件资源</strong>，并合理地组织调动计算机的工作和资源的分配；以<strong>提供给用户和其他软件方便的接口和环境</strong>；它是计算机系统中最基本的系统软件。</p><p>&emsp;&emsp;例如：Windows操作系统的“任务管理器”</p><img src="例一.jpg" style="zoom:67%;" /><p>&emsp;&emsp;这个界面就可以看到正在运行的进程有哪些，还可以看到它们对CPU、内存等等硬件的使用情况。表现了操作系统对硬件和软件的管理者，同时它还向上层提供了方便易用的服务，是最接近硬件的一层软件。</p><h2 id="二、操作系统的功能和目标"><a href="#二、操作系统的功能和目标" class="headerlink" title="二、操作系统的功能和目标"></a>二、操作系统的功能和目标</h2><h3 id="1、作为系统资源的管理者"><a href="#1、作为系统资源的管理者" class="headerlink" title="1、作为系统资源的管理者"></a>1、作为系统资源的管理者</h3><p>&emsp;&emsp;操作系统作为系统资源的管理者，它的功能和目标如下所示：</p><img src="操作系统的功能和目标1.jpg" style="zoom:67%;" /><p>&emsp;&emsp;下面以实现QQ和朋友视频聊天的过程为例：</p><ul><li><p>在各个文件夹中找到QQ安装的位置</p></li><li><p>双击打开QQ.exe</p></li><li><p>QQ程序正常运行</p></li><li><p>开始和朋友视频聊天</p><p>第一步，逐层打开文件夹，找到QQ.exe这个程序的存放位置（<strong>操作系统的文件管理功能</strong>）。</p><p>第二步，双击打开QQ.exe的时候，操作系统会帮助我们把这个程序放到内存中（执行一个程序前，需要将该程序放到内存中，才能被CPU处理。<strong>操作系统的存储管理</strong>）。</p><p>第三步，QQ程序正常运行的时候，对应的进程被处理机（CPU）处理（<strong>操作系统的处理机管理</strong>）。</p><p>第四步，在视频聊天的过程中，操作系统把摄像头等设备资源分配给QQ使用（<strong>操作系统的设备管理</strong>）。</p></li></ul><p>在操作系统的学习中，主要就是学习它作为系统资源的管理者怎样实现这四个功能。</p><h3 id="2-向上层提供方便易用的服务"><a href="#2-向上层提供方便易用的服务" class="headerlink" title="2.向上层提供方便易用的服务"></a>2.向上层提供方便易用的服务</h3><img src="操作系统的功能和目标2.jpg" style="zoom:67%;" /><h4 id="1-GUI：图形化用户接口"><a href="#1-GUI：图形化用户接口" class="headerlink" title="1. GUI：图形化用户接口"></a>1. GUI：图形化用户接口</h4><p>&emsp;&emsp;用户可以使用形象的图形界面进行操作，而不再需要记忆复杂的命令、参数。例如：在Windows操作系统中，删除一个文件只需要把文件“拖拽”到回收站即可。</p><h4 id="2-命令接口"><a href="#2-命令接口" class="headerlink" title="2.命令接口"></a>2.命令接口</h4><p>&emsp;&emsp;在一些早期的操作系统中，让用户用命令接口的方式进行交互。</p><h5 id="emsp-emsp-1-联机命令接口实例（Windows系统）"><a href="#emsp-emsp-1-联机命令接口实例（Windows系统）" class="headerlink" title="&emsp;&emsp;1.联机命令接口实例（Windows系统）"></a>&emsp;&emsp;1.联机命令接口实例（Windows系统）</h5><p>&emsp;&emsp;联机命令接口 &#x3D; 交互式命令接口</p><p>&emsp;&emsp;特点：用户说一句，系统跟着做一句。例如，Windows系统中win+R，输入cmd打开命令解释器，使用time命令。</p><h5 id="emsp-emsp-2-脱机命令接口实例（Windows系统）"><a href="#emsp-emsp-2-脱机命令接口实例（Windows系统）" class="headerlink" title="&emsp;&emsp;2. 脱机命令接口实例（Windows系统）"></a>&emsp;&emsp;2. 脱机命令接口实例（Windows系统）</h5><p>&emsp;&emsp;脱机命令接口 &#x3D; 批处理命令接口</p><p>&emsp;&emsp;特点：用户说一堆，系统跟着做一堆。例如，运行*.bat文件。</p><h4 id="3-程序接口（即系统调用又称广义指令）"><a href="#3-程序接口（即系统调用又称广义指令）" class="headerlink" title="3.程序接口（即系统调用又称广义指令）"></a>3.程序接口（即系统调用又称广义指令）</h4><p>&emsp;&emsp;可以在程序中进行系统调用来使用程序接口。普通用户不能直接使用程序接口，只能通过程序代码间接使用。如：C语言中“Hello World”程序时，在 printf 函数的底层就使用到了操作系统提供的显式相关的“系统调用”</p><h3 id="3-作为最接近硬件的层次"><a href="#3-作为最接近硬件的层次" class="headerlink" title="3.作为最接近硬件的层次"></a>3.作为最接近硬件的层次</h3><p>&emsp;&emsp;需要实现实现<strong>对硬件机器的拓展</strong>。</p><p>&emsp;&emsp;没有任何软件支持的计算机称为<strong>裸机</strong>。在裸机上安装的操作系统，可以提供资源管理功能和方便用户的服务功能，将裸机改造成功能更强、使用更方便的机器。</p><p>&emsp;&emsp;通常把覆盖了软件的机器称为<strong>扩充机器</strong>，又称之为<strong>虚拟机</strong>。</p><p>&emsp;&emsp;操作系统对硬件机器的拓展：将CPU、内存、磁盘、显示器、键盘等硬件合理地组织起来，让各种硬件能够相互协调配合，实现更多更复杂的功能</p><h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><img src="总结.jpg" style="zoom:67%;" />]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>空想家</title>
       <link href="/2023/12/09/all/"/>
       <url>/2023/12/09/all/</url>
