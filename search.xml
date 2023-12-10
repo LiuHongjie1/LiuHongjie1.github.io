@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>操作系统的发展与分类</title>
+      <link href="/2023/12/10/Three/"/>
+      <url>/2023/12/10/Three/</url>
+      
+        <content type="html"><![CDATA[<p>&emsp;&emsp;对《操作系统》的知识梳理  三</p><span id="more"></span><h2 id="零、总览"><a href="#零、总览" class="headerlink" title="零、总览"></a>零、总览</h2><img src="OS的发展与分类.jpg" style="zoom:67%;" /><h2 id="一、手工操作阶段"><a href="#一、手工操作阶段" class="headerlink" title="一、手工操作阶段"></a>一、手工操作阶段</h2><p>&emsp;&emsp;过程：用户把程序写在纸带上(其实就是在纸带上打孔)，然后输入到计算机中，计算机随后会处理这个程序，把输出结果又放在纸带中(其实还是打孔)，展示给用户看。</p><img src="手工操作阶段.jpg" style="zoom:67%;" /><p>&emsp;&emsp;由于用户在纸带上编写程序的速度很慢，纸带输入输出的速度也很慢，而计算机的处理速度快，所以系统资源的利用率极低。<br>&emsp;&emsp;<strong>主要缺点：用户独占全机，人机速度矛盾导致系统资源利用率极低。</strong></p><img src="手工操作阶段时序图.jpg" style="zoom:67%;" /><h2 id="二、批处理阶段"><a href="#二、批处理阶段" class="headerlink" title="二、批处理阶段"></a>二、批处理阶段</h2><h3 id="1-单道批处理系统"><a href="#1-单道批处理系统" class="headerlink" title="1.单道批处理系统"></a>1.单道批处理系统</h3><p>&emsp;&emsp;单道批处理系统引入了<strong>脱机输入&#x2F;输出技术(用磁带完成)<strong>，但是每次只能往内存中输入一道程序，</strong>监督程序</strong>(这是操作系统的雏形)负责控制程序的输入输出。<br>&emsp;&emsp;过程：多个用户把程序写在纸带上，然后通过外围机录入到磁带中，监督程序会控制程序的输入和输出，每次只允许计算机内存中存在一道用户程序。</p><img src="单道批处理阶段.jpg" style="zoom:67%;" /><p>&emsp;&emsp;主要优点: 缓和了一定程度的人机速度矛盾，资源利用率有所提升。<br>&emsp;&emsp;主要缺点: <strong>内存中仅能有一道用户程序运行</strong>，只有该程序运行结束后才能调入下一道程序，<strong>CPU有大量的空闲时间是在等待I&#x2F;O完成</strong>，资源利用率依然很低。</p><img src="单道批处理阶段时序图.jpg" style="zoom:67%;" /><h3 id="2-多道批处理系统（操作系统正式诞生）"><a href="#2-多道批处理系统（操作系统正式诞生）" class="headerlink" title="2.多道批处理系统（操作系统正式诞生）"></a>2.多道批处理系统（操作系统正式诞生）</h3><p>&emsp;&emsp;每次往计算机内存中输入多道程序，并引入了中断技术，由操作系统负责管理这些程序的并发运行。<br>&emsp;&emsp;过程：和单道批处理系统差不多，只不过是可以向计算机内存中调入多道程序，让他们在计算机内存中并发运行。<br>&emsp;&emsp;主要优点：多道程序<strong>并发</strong>运行，<strong>共享</strong>计算机资源，<strong>资源利用率大幅提升</strong>，CPU和其他资源保存”忙碌”状态的时间增长。<br>&emsp;&emsp;主要缺点：用户响应时间长，<strong>没有人机交互功能</strong>(用户提交自己的作业之后只能等待计算机处理完成，中间不能控制自己作业的执行)<br><img src="多道批处理阶段时序图.jpg"  /></p><h2 id="三、分时操作系统"><a href="#三、分时操作系统" class="headerlink" title="三、分时操作系统"></a>三、分时操作系统</h2><p>&emsp;&emsp;计算机以<strong>时间片</strong>为单位<strong>轮流为各个用户&#x2F;作业服务</strong>，各个用户可通过终端与计算机进行交互。</p><p>&emsp;&emsp;主要优点：用户请求可以被及时响应，<strong>解决了人机交互问题</strong>。允许多个用户同时使用一台计算机，并且用户对计算机的操作相互独立，感受不到别人的存在。</p><p>&emsp;&emsp;主要缺点：<strong>不能优先处理一些紧急任务</strong>。操作系统对各个用户&#x2F;作业都是完全公平的，循环地为每个用户&#x2F;作业服务一个时间片，不区分任务的紧急性。</p><h2 id="四、实时操作系统"><a href="#四、实时操作系统" class="headerlink" title="四、实时操作系统"></a>四、实时操作系统</h2><p>&emsp;&emsp;主要优点：能够优先响应一些紧急任务，某些紧急任务不需要时间片排队。</p><p>&emsp;&emsp;在实时操作系统的控制下，计算机系统接收到外部信号后及时进行处理，并且<strong>要在严格的时限内处理完事件</strong>。实时操作系统的主要特点是<strong>及时性和可靠性</strong>。</p><h3 id="1-硬实时系统"><a href="#1-硬实时系统" class="headerlink" title="1.硬实时系统"></a>1.硬实时系统</h3><p>&emsp;&emsp;指必须在绝对严格的规定时间内完成处理，如导弹控制系统、自动驾驶系统。</p><h3 id="2-软实时系统"><a href="#2-软实时系统" class="headerlink" title="2.软实时系统"></a>2.软实时系统</h3><p>&emsp;&emsp;指能接受偶尔违反时间规定，如12306火车订票系统。</p><h2 id="五、其他几种操作系统"><a href="#五、其他几种操作系统" class="headerlink" title="五、其他几种操作系统"></a>五、其他几种操作系统</h2><h3 id="1-网络操作系统："><a href="#1-网络操作系统：" class="headerlink" title="1.网络操作系统："></a>1.网络操作系统：</h3><p>&emsp;&emsp;是伴随着计算机网络的发展而诞生的，能把网络中各个计算机有机地结合起来，实现数据传送等功能，<strong>实现网络中各种资源的共享（如文件共享）和各种计算机之间的通信</strong>。（如：Windows NT就是一种典型的网络操作系统，网站服务器就可以使用）</p><h3 id="2-分布式操作系统："><a href="#2-分布式操作系统：" class="headerlink" title="2.分布式操作系统："></a>2.分布式操作系统：</h3><p>&emsp;&emsp;主要特点是<strong>分布性和并行性</strong>。系统中的各台计算机地位相同，<strong>任何工作都可以分布在这些计算机上，由它们并行、协同地完成这个任务</strong>。</p><h3 id="3-个人计算机操作系统："><a href="#3-个人计算机操作系统：" class="headerlink" title="3.个人计算机操作系统："></a>3.个人计算机操作系统：</h3><p>&emsp;&emsp;如Windows XP、MacOS，方便个人使用。</p><h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p><img src="/2023/12/10/Three/%E6%80%BB%E7%BB%93.jpg"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统的特征</title>
       <link href="/2023/12/10/Two/"/>
       <url>/2023/12/10/Two/</url>
@@ -58,7 +83,7 @@
       <link href="/2023/12/09/all/"/>
       <url>/2023/12/09/all/</url>
       
-        <content type="html"><![CDATA[<p>&emsp;&emsp;<strong>学计算机一定要有一个非常强大的心理状态：计算机的所有东西都是人做出来的，别人能想出来的，我也一定能想得出来。</strong></p><p>&emsp;&emsp;<strong>在计算机里头，没有任何黑魔法，所有的东西，只不过是我现在不知道而已，总有一天，我会把所有的细节，所有的内部的东西，全都搞明白的。</strong></p>]]></content>
+        <content type="html"><![CDATA[<p>&emsp;&emsp;<strong>学计算机一定要有一个非常强大的心理状态：计算机的所有东西都是人做出来的，别人能想出来的，我也一定能想得出来。</strong></p><p>&emsp;&emsp;<strong>在计算机里头，没有任何黑魔法。所有的东西，只不过是我现在不知道而已，总有一天，我会把所有的细节、所有的内部的东西，全都搞明白的。</strong></p>]]></content>
       
       
       
