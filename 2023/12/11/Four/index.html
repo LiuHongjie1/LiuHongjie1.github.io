@@ -23,25 +23,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="初初见你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="空想家">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+    <meta name="description" content="&emsp;&emsp;对《操作系统》的知识梳理  四">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统的运行机制">
+<meta property="og:url" content="http://example.com/2023/12/11/Four/index.html">
 <meta property="og:site_name" content="空想家">
-<meta property="og:description" content="初初见你">
+<meta property="og:description" content="&emsp;&emsp;对《操作系统》的知识梳理  四">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/12/11/Four/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.jpg">
+<meta property="og:image" content="http://example.com/2023/12/11/Four/%E6%80%BB%E7%BB%93.jpg">
+<meta property="article:published_time" content="2023-12-11T07:57:45.000Z">
+<meta property="article:modified_time" content="2023-12-11T09:04:13.876Z">
 <meta property="article:author" content="Liu">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/12/11/Four/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.jpg">
 
 
-<link rel="canonical" href="http://example.com/archives/2023/">
+<link rel="canonical" href="http://example.com/2023/12/11/Four/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2023/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/12/11/Four/","path":"2023/12/11/Four/","title":"操作系统的运行机制"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 空想家</title>
+<title>操作系统的运行机制 | 空想家</title>
   
 
 
@@ -74,7 +80,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">空想家</h1>
+      <p class="site-title">空想家</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -127,7 +133,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -140,6 +146,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E3%80%81%E6%80%BB%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">零、总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">一、内核程序与应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E6%9D%83%E6%8C%87%E4%BB%A4%E4%B8%8E%E9%9D%9E%E7%89%B9%E6%9D%83%E6%8C%87%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">二、特权指令与非特权指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%86%85%E6%A0%B8%E6%80%81%E5%92%8C%E7%94%A8%E6%88%B7%E6%80%81"><span class="nav-number">4.</span> <span class="nav-text">三、内核态和用户态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%86%85%E6%A0%B8%E6%80%81%E3%80%81%E7%94%A8%E6%88%B7%E6%80%81%E7%9A%84%E5%88%87%E6%8D%A2"><span class="nav-number">5.</span> <span class="nav-text">四、内核态、用户态的切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">五、总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -189,169 +196,146 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 7 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/11/Four/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空想家">
+      <meta itemprop="description" content="初初见你">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="操作系统的运行机制 | 空想家">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统的运行机制
+        </h1>
+
+        <div class="post-meta-container">
+
+
+
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
+
+      <time title="创建时间：2023-12-11 15:57:45 / 修改时间：17:04:13" itemprop="dateCreated datePublished" datetime="2023-12-11T15:57:45+08:00">2023-12-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>979</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;对《操作系统》的知识梳理  四</p>
+<span id="more"></span>
+
+<h2 id="零、总览"><a href="#零、总览" class="headerlink" title="零、总览"></a>零、总览</h2><img src="操作系统的运行机制.jpg" style="zoom: 67%;" />
+
+
+
+<p><strong>预备知识：程序是如何运行的？</strong></p>
+<p>&emsp;&emsp;C语言代码经过编译器“翻译”成机器指令（二进制码），CPU运行C语言代码的过程，就是CPU执行被编译器编译后的一条一条的机器指令的过程。</p>
+<p>&emsp;&emsp;本节中的指令，指的是二进制机器指令。</p>
+<h2 id="一、内核程序与应用程序"><a href="#一、内核程序与应用程序" class="headerlink" title="一、内核程序与应用程序"></a>一、内核程序与应用程序</h2><p>&emsp;&emsp;一般来说，普通程序员写的程序就是“<strong>应用程序</strong>”，像微软、苹果有一帮人负责实现操作系统，他们写的就是“<strong>内核程序</strong>”，由很多内核程序组成了“<strong>操作系统内核</strong>”，或简称“**内核(Kernel)**”。</p>
+<p>&emsp;&emsp;<strong>内核</strong>是操作系统最重要最核心的部分，也是<strong>最接近硬件的部分</strong>。甚至可以说，一个操作系统只有有内核就够了（<strong>操作系统的功能未必都在内核中</strong>，如图形化用户界面GUI）。</p>
+<h2 id="二、特权指令与非特权指令"><a href="#二、特权指令与非特权指令" class="headerlink" title="二、特权指令与非特权指令"></a>二、特权指令与非特权指令</h2><p>&emsp;&emsp;在CPU设计和生产的时候就划分了特权指令和非特权指令，因此，CPU在执行一条指令前就能判断出其类型。</p>
+<p>&emsp;&emsp;操作系统内核作为“管理者”，有时候会让CPU执行一些“<strong>特权指令</strong>”，如，内存清零指令。这些指令影响重大，<strong>只允许</strong>“管理者”——即<strong>操作系统内核来使用</strong>。</p>
+<p>&emsp;&emsp;简单地说，如果这段程序是普通的<strong>应用程序</strong>的话，它<strong>只能使用非特权指令</strong>，如：加法指令、减法指令等。</p>
+<h2 id="三、内核态和用户态"><a href="#三、内核态和用户态" class="headerlink" title="三、内核态和用户态"></a>三、内核态和用户态</h2><p>&emsp;&emsp;CPU有两种状态，<strong>内核态</strong>和<strong>用户态</strong>。</p>
+<p>&emsp;&emsp;处于<strong>内核态时</strong>，说明此时<strong>正在运行的是内核程序</strong>，此时<strong>可以执行特权指令</strong>；处于<strong>用户态时</strong>，说明此时<strong>正在运行的是应用程序</strong>，此时<strong>只能执行非特权指令</strong>。</p>
+<p>&emsp;&emsp;在CPU中有一个寄存器叫<strong>程序状态字寄存器（PSW）</strong>，其中有个二进制位，1表示内核态，0表示用户态。</p>
+<p>&emsp;&emsp;用户态 &#x3D; <strong>目态</strong>，内核态 &#x3D; 核心态 &#x3D; <strong>管态</strong>。</p>
+<h2 id="四、内核态、用户态的切换"><a href="#四、内核态、用户态的切换" class="headerlink" title="四、内核态、用户态的切换"></a>四、内核态、用户态的切换</h2><p>以一个例子说明：</p>
+<p>&emsp;&emsp;刚开机时，CPU为内核态，操作系统内核程序先上CPU运行。开机完成后，用户可以启动某个应用程序。操作系统内核程序在合适的时候主动让出CPU，<strong>操作系统内核在让出CPU之前，会用一条特权指令把PSW的标志位设置为用户态</strong>。应用程序在CPU上运行，运行在用户态。</p>
+<p>&emsp;&emsp;如果在应用程序中，有一条特权指令。CPU发现接下来要执行的这条指令是特权指令，但是自己又处于用户态时，这个非法事件会引发一个中断信号。<strong>CPU检测到中断信号后</strong>，会立即<strong>变为核心态</strong>，停止执行当前的应用程序，转而运行处理中断信号的内核程序。中断使操作系统再次夺回CPU的控制权，操作系统会对引发中断的事件进行处理，处理完后再把CPU使用权交给别的应用程序。</p>
+<p>综上：</p>
+<p>&emsp;&emsp;<strong>内核态→用户态</strong>：执行一条<strong>特权指令——修改PSW的标志位为“用户态”</strong>，这个动作意味着操作系统主动让出CPU的使用权。</p>
+<p>&emsp;&emsp;<strong>用户态→内核态</strong>：由“<strong>中断</strong>“引发，<strong>硬件自动完成变态过程</strong>，触发中断信号意味着操作系统将强行夺回CPU的使用权。（除了非法使用特权指令外，但凡需要操作系统介入的地方，都会触发中断信号）</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p><img src="/2023/12/11/Four/%E6%80%BB%E7%BB%93.jpg"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-11T17:04:29+08:00"
-              content="2023-12-11">
-          12-11
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/11/Five/" itemprop="url">
-          <span itemprop="name">中断和异常</span>
-        </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 操作系统</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/10/Three/" rel="prev" title="操作系统的发展与分类">
+                  <i class="fa fa-angle-left"></i> 操作系统的发展与分类
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/12/11/Five/" rel="next" title="中断和异常">
+                  中断和异常 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-11T15:57:45+08:00"
-              content="2023-12-11">
-          12-11
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/11/Four/" itemprop="url">
-          <span itemprop="name">操作系统的运行机制</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-10T22:48:44+08:00"
-              content="2023-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/10/Three/" itemprop="url">
-          <span itemprop="name">操作系统的发展与分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-10T21:37:54+08:00"
-              content="2023-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/10/Two/" itemprop="url">
-          <span itemprop="name">操作系统的特征</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-10T19:55:53+08:00"
-              content="2023-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/10/One/" itemprop="url">
-          <span itemprop="name">操作系统的概念、功能</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-09T18:05:09+08:00"
-              content="2023-12-09">
-          12-09
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/09/all/" itemprop="url">
-          <span itemprop="name">空想家</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-07T21:43:30+08:00"
-              content="2023-12-07">
-          12-07
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/07/Zero/" itemprop="url">
-          <span itemprop="name">基于mediapipe的姿态识别和简单行为识别</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>

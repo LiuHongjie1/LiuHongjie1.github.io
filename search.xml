@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>中断和异常</title>
+      <link href="/2023/12/11/Five/"/>
+      <url>/2023/12/11/Five/</url>
+      
+        <content type="html"><![CDATA[<p>&emsp;&emsp;对《操作系统》的知识梳理  五</p><span id="more"></span><h2 id="零、总览"><a href="#零、总览" class="headerlink" title="零、总览"></a>零、总览</h2><p><img src="/2023/12/11/Five/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8.jpg"></p><h2 id="一、中断的作用"><a href="#一、中断的作用" class="headerlink" title="一、中断的作用"></a>一、中断的作用</h2><p>&emsp;&emsp;CPU上会运行两种程序，一种是<strong>操作系统内核程序</strong>，一种是<strong>应用程序</strong>，在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序。</p><p>&emsp;&emsp;总之，一个应用程序一旦上CPU运行之后，它就会一直运行下去，除非发生了中断。一旦发生了中断，就会让CPU立即停止运行应用程序，转而执行内核程序。<strong>“中断”是让操作系统内核夺回CPU使用权的唯一途径</strong>，会使CPU由用户态变为内核态 。</p><h2 id="二、中断的类型"><a href="#二、中断的类型" class="headerlink" title="二、中断的类型"></a>二、中断的类型</h2><h3 id="emsp-1-内中断"><a href="#emsp-1-内中断" class="headerlink" title="&emsp;1.内中断"></a>&emsp;1.内中断</h3><p>&emsp;&emsp;与当前执行的指令有关，中断信号来源于CPU内部。</p><p>&emsp;&emsp;例如：试图在用户态下执行特权指令、执行除法指令时发现除数为0、有时候应用程序想请求操作系统内核的服务，此时会执行<strong>一条特殊的指令——陷入指令（非特权指令）</strong>，该指令会引发一个内部中断信号，系统调用就是使用这种方式完成。</p><h3 id="emsp-2-外中断"><a href="#emsp-2-外中断" class="headerlink" title="&emsp;2.外中断"></a>&emsp;2.外中断</h3><p>&emsp;&emsp;与当前执行的指令无关，中断信号来源于CPU外部。</p><p>&emsp;&emsp;例如：时钟中断——由时钟部件发来的中断信号（例如每50 ms给CPU发送一个中断信号)、I&#x2F;O中断——由输入&#x2F;输出设备发来的中断信号（CPU每一条指令执行结束都会例行检查是否有外中断信号）</p><h2 id="三、中断的分类"><a href="#三、中断的分类" class="headerlink" title="三、中断的分类"></a>三、中断的分类</h2><img src="中断的分类.jpg" style="zoom:67%;" /><p>&emsp;&emsp;陷阱、陷入：由陷入指令引发，是应用程序故意引发的。</p><p>&emsp;&emsp;故障：由错误条件引起，可能被内核程序修复，内核程序修复故障后会把CPU使用权还给应用程序，让它继续执行下去，如：缺页故障。</p><p>&emsp;&emsp;终止：由致命错误引起，内核程序无法修复该错误，因此一般不再将CPU使用权还给引发终止的应用程序，而是直接终止该应用程序。如：整数除0、非法使用特权指令等。</p><h2 id="四、中断机制的基本原理"><a href="#四、中断机制的基本原理" class="headerlink" title="四、中断机制的基本原理"></a>四、中断机制的基本原理</h2><p>&emsp;&emsp;<strong>不同的中断信号，需要用不同的中断处理程序来处理。</strong>当CPU检测到中断信号后，会根据中断信号的类型去查询“<strong>中断向量表</strong>”，以此来找到相应的中断处理程序在内存中存放的位置。</p><h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p><img src="/2023/12/11/Five/%E6%80%BB%E7%BB%93.jpg"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统的运行机制</title>
+      <link href="/2023/12/11/Four/"/>
+      <url>/2023/12/11/Four/</url>
+      
+        <content type="html"><![CDATA[<p>&emsp;&emsp;对《操作系统》的知识梳理  四</p><span id="more"></span><h2 id="零、总览"><a href="#零、总览" class="headerlink" title="零、总览"></a>零、总览</h2><img src="操作系统的运行机制.jpg" style="zoom: 67%;" /><p><strong>预备知识：程序是如何运行的？</strong></p><p>&emsp;&emsp;C语言代码经过编译器“翻译”成机器指令（二进制码），CPU运行C语言代码的过程，就是CPU执行被编译器编译后的一条一条的机器指令的过程。</p><p>&emsp;&emsp;本节中的指令，指的是二进制机器指令。</p><h2 id="一、内核程序与应用程序"><a href="#一、内核程序与应用程序" class="headerlink" title="一、内核程序与应用程序"></a>一、内核程序与应用程序</h2><p>&emsp;&emsp;一般来说，普通程序员写的程序就是“<strong>应用程序</strong>”，像微软、苹果有一帮人负责实现操作系统，他们写的就是“<strong>内核程序</strong>”，由很多内核程序组成了“<strong>操作系统内核</strong>”，或简称“**内核(Kernel)**”。</p><p>&emsp;&emsp;<strong>内核</strong>是操作系统最重要最核心的部分，也是<strong>最接近硬件的部分</strong>。甚至可以说，一个操作系统只有有内核就够了（<strong>操作系统的功能未必都在内核中</strong>，如图形化用户界面GUI）。</p><h2 id="二、特权指令与非特权指令"><a href="#二、特权指令与非特权指令" class="headerlink" title="二、特权指令与非特权指令"></a>二、特权指令与非特权指令</h2><p>&emsp;&emsp;在CPU设计和生产的时候就划分了特权指令和非特权指令，因此，CPU在执行一条指令前就能判断出其类型。</p><p>&emsp;&emsp;操作系统内核作为“管理者”，有时候会让CPU执行一些“<strong>特权指令</strong>”，如，内存清零指令。这些指令影响重大，<strong>只允许</strong>“管理者”——即<strong>操作系统内核来使用</strong>。</p><p>&emsp;&emsp;简单地说，如果这段程序是普通的<strong>应用程序</strong>的话，它<strong>只能使用非特权指令</strong>，如：加法指令、减法指令等。</p><h2 id="三、内核态和用户态"><a href="#三、内核态和用户态" class="headerlink" title="三、内核态和用户态"></a>三、内核态和用户态</h2><p>&emsp;&emsp;CPU有两种状态，<strong>内核态</strong>和<strong>用户态</strong>。</p><p>&emsp;&emsp;处于<strong>内核态时</strong>，说明此时<strong>正在运行的是内核程序</strong>，此时<strong>可以执行特权指令</strong>；处于<strong>用户态时</strong>，说明此时<strong>正在运行的是应用程序</strong>，此时<strong>只能执行非特权指令</strong>。</p><p>&emsp;&emsp;在CPU中有一个寄存器叫<strong>程序状态字寄存器（PSW）</strong>，其中有个二进制位，1表示内核态，0表示用户态。</p><p>&emsp;&emsp;用户态 &#x3D; <strong>目态</strong>，内核态 &#x3D; 核心态 &#x3D; <strong>管态</strong>。</p><h2 id="四、内核态、用户态的切换"><a href="#四、内核态、用户态的切换" class="headerlink" title="四、内核态、用户态的切换"></a>四、内核态、用户态的切换</h2><p>以一个例子说明：</p><p>&emsp;&emsp;刚开机时，CPU为内核态，操作系统内核程序先上CPU运行。开机完成后，用户可以启动某个应用程序。操作系统内核程序在合适的时候主动让出CPU，<strong>操作系统内核在让出CPU之前，会用一条特权指令把PSW的标志位设置为用户态</strong>。应用程序在CPU上运行，运行在用户态。</p><p>&emsp;&emsp;如果在应用程序中，有一条特权指令。CPU发现接下来要执行的这条指令是特权指令，但是自己又处于用户态时，这个非法事件会引发一个中断信号。<strong>CPU检测到中断信号后</strong>，会立即<strong>变为核心态</strong>，停止执行当前的应用程序，转而运行处理中断信号的内核程序。中断使操作系统再次夺回CPU的控制权，操作系统会对引发中断的事件进行处理，处理完后再把CPU使用权交给别的应用程序。</p><p>综上：</p><p>&emsp;&emsp;<strong>内核态→用户态</strong>：执行一条<strong>特权指令——修改PSW的标志位为“用户态”</strong>，这个动作意味着操作系统主动让出CPU的使用权。</p><p>&emsp;&emsp;<strong>用户态→内核态</strong>：由“<strong>中断</strong>“引发，<strong>硬件自动完成变态过程</strong>，触发中断信号意味着操作系统将强行夺回CPU的使用权。（除了非法使用特权指令外，但凡需要操作系统介入的地方，都会触发中断信号）</p><h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p><img src="/2023/12/11/Four/%E6%80%BB%E7%BB%93.jpg"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统的发展与分类</title>
       <link href="/2023/12/10/Three/"/>
       <url>/2023/12/10/Three/</url>

@@ -23,25 +23,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="初初见你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="空想家">
-<meta property="og:url" content="http://example.com/archives/2023/index.html">
+    <meta name="description" content="&emsp;&emsp;对《操作系统》的知识梳理  五">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中断和异常">
+<meta property="og:url" content="http://example.com/2023/12/11/Five/index.html">
 <meta property="og:site_name" content="空想家">
-<meta property="og:description" content="初初见你">
+<meta property="og:description" content="&emsp;&emsp;对《操作系统》的知识梳理  五">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/12/11/Five/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8.jpg">
+<meta property="og:image" content="http://example.com/2023/12/11/Five/%E4%B8%AD%E6%96%AD%E7%9A%84%E5%88%86%E7%B1%BB.jpg">
+<meta property="og:image" content="http://example.com/2023/12/11/Five/%E6%80%BB%E7%BB%93.jpg">
+<meta property="article:published_time" content="2023-12-11T09:04:29.000Z">
+<meta property="article:modified_time" content="2023-12-11T09:37:36.350Z">
 <meta property="article:author" content="Liu">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/12/11/Five/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8.jpg">
 
 
-<link rel="canonical" href="http://example.com/archives/2023/">
+<link rel="canonical" href="http://example.com/2023/12/11/Five/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2023/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/12/11/Five/","path":"2023/12/11/Five/","title":"中断和异常"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 空想家</title>
+<title>中断和异常 | 空想家</title>
   
 
 
@@ -74,7 +81,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">空想家</h1>
+      <p class="site-title">空想家</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -127,7 +134,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -140,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%B6%E3%80%81%E6%80%BB%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">零、总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%AD%E6%96%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">一、中断的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%AD%E6%96%AD%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">二、中断的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#emsp-1-%E5%86%85%E4%B8%AD%E6%96%AD"><span class="nav-number">3.1.</span> <span class="nav-text"> 1.内中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#emsp-2-%E5%A4%96%E4%B8%AD%E6%96%AD"><span class="nav-number">3.2.</span> <span class="nav-text"> 2.外中断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%B8%AD%E6%96%AD%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">三、中断的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">四、中断机制的基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">五、总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -189,169 +197,134 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 7 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/11/Five/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="空想家">
+      <meta itemprop="description" content="初初见你">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="中断和异常 | 空想家">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          中断和异常
+        </h1>
+
+        <div class="post-meta-container">
+
+
+
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
+
+      <time title="创建时间：2023-12-11 17:04:29 / 修改时间：17:37:36" itemprop="dateCreated datePublished" datetime="2023-12-11T17:04:29+08:00">2023-12-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>662</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;对《操作系统》的知识梳理  五</p>
+<span id="more"></span>
+
+<h2 id="零、总览"><a href="#零、总览" class="headerlink" title="零、总览"></a>零、总览</h2><p><img src="/2023/12/11/Five/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8.jpg"></p>
+<h2 id="一、中断的作用"><a href="#一、中断的作用" class="headerlink" title="一、中断的作用"></a>一、中断的作用</h2><p>&emsp;&emsp;CPU上会运行两种程序，一种是<strong>操作系统内核程序</strong>，一种是<strong>应用程序</strong>，在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序。</p>
+<p>&emsp;&emsp;总之，一个应用程序一旦上CPU运行之后，它就会一直运行下去，除非发生了中断。一旦发生了中断，就会让CPU立即停止运行应用程序，转而执行内核程序。<strong>“中断”是让操作系统内核夺回CPU使用权的唯一途径</strong>，会使CPU由用户态变为内核态 。</p>
+<h2 id="二、中断的类型"><a href="#二、中断的类型" class="headerlink" title="二、中断的类型"></a>二、中断的类型</h2><h3 id="emsp-1-内中断"><a href="#emsp-1-内中断" class="headerlink" title="&emsp;1.内中断"></a>&emsp;1.内中断</h3><p>&emsp;&emsp;与当前执行的指令有关，中断信号来源于CPU内部。</p>
+<p>&emsp;&emsp;例如：试图在用户态下执行特权指令、执行除法指令时发现除数为0、有时候应用程序想请求操作系统内核的服务，此时会执行<strong>一条特殊的指令——陷入指令（非特权指令）</strong>，该指令会引发一个内部中断信号，系统调用就是使用这种方式完成。</p>
+<h3 id="emsp-2-外中断"><a href="#emsp-2-外中断" class="headerlink" title="&emsp;2.外中断"></a>&emsp;2.外中断</h3><p>&emsp;&emsp;与当前执行的指令无关，中断信号来源于CPU外部。</p>
+<p>&emsp;&emsp;例如：时钟中断——由时钟部件发来的中断信号（例如每50 ms给CPU发送一个中断信号)、I&#x2F;O中断——由输入&#x2F;输出设备发来的中断信号（CPU每一条指令执行结束都会例行检查是否有外中断信号）</p>
+<h2 id="三、中断的分类"><a href="#三、中断的分类" class="headerlink" title="三、中断的分类"></a>三、中断的分类</h2><img src="中断的分类.jpg" style="zoom:67%;" />
+
+<p>&emsp;&emsp;陷阱、陷入：由陷入指令引发，是应用程序故意引发的。</p>
+<p>&emsp;&emsp;故障：由错误条件引起，可能被内核程序修复，内核程序修复故障后会把CPU使用权还给应用程序，让它继续执行下去，如：缺页故障。</p>
+<p>&emsp;&emsp;终止：由致命错误引起，内核程序无法修复该错误，因此一般不再将CPU使用权还给引发终止的应用程序，而是直接终止该应用程序。如：整数除0、非法使用特权指令等。</p>
+<h2 id="四、中断机制的基本原理"><a href="#四、中断机制的基本原理" class="headerlink" title="四、中断机制的基本原理"></a>四、中断机制的基本原理</h2><p>&emsp;&emsp;<strong>不同的中断信号，需要用不同的中断处理程序来处理。</strong>当CPU检测到中断信号后，会根据中断信号的类型去查询“<strong>中断向量表</strong>”，以此来找到相应的中断处理程序在内存中存放的位置。</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p><img src="/2023/12/11/Five/%E6%80%BB%E7%BB%93.jpg"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-11T17:04:29+08:00"
-              content="2023-12-11">
-          12-11
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/11/Five/" itemprop="url">
-          <span itemprop="name">中断和异常</span>
-        </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 操作系统</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/11/Four/" rel="prev" title="操作系统的运行机制">
+                  <i class="fa fa-angle-left"></i> 操作系统的运行机制
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-11T15:57:45+08:00"
-              content="2023-12-11">
-          12-11
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/11/Four/" itemprop="url">
-          <span itemprop="name">操作系统的运行机制</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-10T22:48:44+08:00"
-              content="2023-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/10/Three/" itemprop="url">
-          <span itemprop="name">操作系统的发展与分类</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-10T21:37:54+08:00"
-              content="2023-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/10/Two/" itemprop="url">
-          <span itemprop="name">操作系统的特征</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-10T19:55:53+08:00"
-              content="2023-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/10/One/" itemprop="url">
-          <span itemprop="name">操作系统的概念、功能</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-09T18:05:09+08:00"
-              content="2023-12-09">
-          12-09
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/09/all/" itemprop="url">
-          <span itemprop="name">空想家</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2023-12-07T21:43:30+08:00"
-              content="2023-12-07">
-          12-07
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2023/12/07/Zero/" itemprop="url">
-          <span itemprop="name">基于mediapipe的姿态识别和简单行为识别</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>
