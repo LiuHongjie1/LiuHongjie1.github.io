@@ -26,28 +26,28 @@
     <meta name="description" content="本文是基于mediapipe的姿态识别和简单行为识别，通过对人体姿态关键点的坐标的使用，实现简单的举手检测，其行为检测的精度主要取决于mediapipe关键点的检测精度。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于mediapipe的姿态识别和简单行为识别">
-<meta property="og:url" content="http://example.com/2023/12/07/One/index.html">
+<meta property="og:url" content="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/index.html">
 <meta property="og:site_name" content="空想家">
 <meta property="og:description" content="本文是基于mediapipe的姿态识别和简单行为识别，通过对人体姿态关键点的坐标的使用，实现简单的举手检测，其行为检测的精度主要取决于mediapipe关键点的检测精度。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/12/07/One/%E4%BA%BA%E4%BD%93%E5%85%B3%E9%94%AE%E7%82%B9.jpg">
-<meta property="og:image" content="http://example.com/2023/12/07/One/no%20raise.jpg">
-<meta property="og:image" content="http://example.com/2023/12/07/One/left%20raise.jpg">
-<meta property="og:image" content="http://example.com/2023/12/07/One/right%20raise.jpg">
+<meta property="og:image" content="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/%E4%BA%BA%E4%BD%93%E5%85%B3%E9%94%AE%E7%82%B9.jpg">
+<meta property="og:image" content="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/no%20raise.jpg">
+<meta property="og:image" content="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/left%20raise.jpg">
+<meta property="og:image" content="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/right%20raise.jpg">
 <meta property="article:published_time" content="2023-12-07T13:43:30.000Z">
 <meta property="article:modified_time" content="2024-01-15T03:16:20.785Z">
 <meta property="article:author" content="Liu">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/12/07/One/%E4%BA%BA%E4%BD%93%E5%85%B3%E9%94%AE%E7%82%B9.jpg">
+<meta name="twitter:image" content="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/%E4%BA%BA%E4%BD%93%E5%85%B3%E9%94%AE%E7%82%B9.jpg">
 
 
-<link rel="canonical" href="http://example.com/2023/12/07/One/">
+<link rel="canonical" href="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/12/07/One/","path":"2023/12/07/One/","title":"基于mediapipe的姿态识别和简单行为识别"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/","path":"2023/12/07/基于mediapipe的姿态识别和简单行为识别/","title":"基于mediapipe的姿态识别和简单行为识别"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>基于mediapipe的姿态识别和简单行为识别 | 空想家</title>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/07/One/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/07/%E5%9F%BA%E4%BA%8Emediapipe%E7%9A%84%E5%A7%BF%E6%80%81%E8%AF%86%E5%88%AB%E5%92%8C%E7%AE%80%E5%8D%95%E8%A1%8C%E4%B8%BA%E8%AF%86%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -372,7 +372,7 @@ target="_blank" rel="noopener" href="https://github.com/LiuHongjie1/-mediapipe-.
             <div class="post-nav-item">
             </div>
             <div class="post-nav-item">
-                <a href="/2023/12/09/Zero/" rel="next" title="空想家">
+                <a href="/2023/12/09/%E7%A9%BA%E6%83%B3%E5%AE%B6/" rel="next" title="空想家">
                   空想家 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
